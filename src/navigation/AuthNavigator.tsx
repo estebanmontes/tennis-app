@@ -7,6 +7,7 @@ import WelcomeScreen from 'containers/WelcomeScreen';
 import InputCodeScreen from 'containers/AccountRecovery/InputCode';
 import InputEmailScreen from 'containers/AccountRecovery/InputEmail';
 import EmailConfirmationScreen from 'containers/EmailConfirmation';
+import EvaluationWelcomeScreen from 'containers/Evaluation/EvaluationWelcomeScreen'
 
 const Stack = createNativeStackNavigator();
 
@@ -36,7 +37,12 @@ const AuthNavigator: React.FC = () => {
       />
       <Stack.Screen
         name="EmailConfirmationScreen"
-        component={InputEmailScreen}
+        component={EmailConfirmationScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="EvaluationWelcomeScreen"
+        component={EvaluationWelcomeScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 import Button from '~/components/Button';
 import Input from '~/components/Input';
 import * as Yup from 'yup';
+import Txt from '~/components/Txt';
 import { Formik } from 'formik';
 import { useNavigation } from '@react-navigation/native';
 
@@ -13,20 +14,6 @@ const ScreenContainer = styled(View)`
   padding-top: 100px;
   padding-left: 12px;
   padding-right: 12px;
-`;
-const Text1 = styled(Text)`
-  font-family: 'DMSans-Bold';
-  font-size: 36px;
-  color: #000;
-`;
-
-const Text2 = styled(Text)`
-  font-family: 'DMSans-Regular';
-  font-size: 16px;
-  color: #000;
-  font-weight: 400;
-  margin-top: 12px;
-  margin-bottom: 18px;
 `;
 
 const ButtonsContainer = styled(View)`
@@ -49,8 +36,8 @@ const RegisterScreen: React.FC = () => {
   };
   return (
     <ScreenContainer>
-      <Text1>Creá tu cuenta</Text1>
-      <Text2>Al crear tu cuenta, aceptas nuestros términos y condiciones.</Text2>
+      <Txt type='t1'>Creá tu cuenta</Txt>
+      <Txt type='t2'>Al crear tu cuenta, aceptas nuestros términos y condiciones.</Txt>
       <Formik
         initialValues={{ email: '', password: '' }}
         validationSchema={validationSchema}

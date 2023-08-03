@@ -12,6 +12,7 @@ const App: React.FC = () => {
   const [fontsLoaded] = useFonts({
     'DMSans-Regular': require('./assets/fonts/DMSans-Regular.ttf'),
     'DMSans-Bold': require('./assets/fonts/DMSans-Bold.ttf'),
+    'DMSans-Mono': require('./assets/fonts/DMMono-Regular.ttf'),
     // Add more font variants if needed
   });
   if (!fontsLoaded) {

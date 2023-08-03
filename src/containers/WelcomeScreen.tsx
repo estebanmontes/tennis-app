@@ -3,8 +3,11 @@ import { View, Text } from 'react-native';
 import { Video } from 'expo-av';
 import styled from 'styled-components/native';
 import Button from '~/components/Button';
+import Txt from '~/components/Txt';
+import { FontAwesome } from '@expo/vector-icons';
 import TextButton from '~/components/TextButton';
 import { useNavigation } from '@react-navigation/native';
+import Logo from '~/components/Logo';
 
 const VideoBackground = styled(Video)`
   position: absolute;
@@ -33,7 +36,7 @@ const Paragraph = styled(Text)`
 
 const ScreenContainer = styled(View)`
   flex: 1;
-  padding: 16px;
+  padding: 100px 16px 16px 16px;
   display: flex;
 `;
 
@@ -88,6 +91,7 @@ const LoginScreen: React.FC = () => {
         shouldPlay
         isLooping
       />
+      <Logo />
       {!showMore && (
         <OptionsContainer>
           <BigText>Bienvenido al club.</BigText>
@@ -98,7 +102,7 @@ const LoginScreen: React.FC = () => {
           <Button onPress={() => setShowMore(!showMore)} type="primary">
             Crear cuenta
           </Button>
-          <Button onPress={() => navigation.navigate('LoginScreen')} type="secondary">
+          <Button onPress={() => navigation.navigate('EvaluationWelcomeScreen')} type="secondary">
             Iniciar sesión
           </Button>
         </OptionsContainer>
@@ -111,7 +115,7 @@ const LoginScreen: React.FC = () => {
             Registrar correo electrónico
           </Button>
           <Text2> Otras opciones</Text2>
-          <Button onPress={() => setShowMore(!showMore)} type="secondary">
+          <Button iconLeft={<FontAwesome name={'google'} size={20} color="black" />} onPress={() => setShowMore(!showMore)} type="secondary">
             Continuar con Google
           </Button>
           <Button onPress={() => setShowMore(!showMore)} type="tertiary">
