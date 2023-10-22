@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "scratch-app",
-    "slug": "scratch-app",
+    "slug": "tenis-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,16 +15,24 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.estebamg.tenisapp"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.estebamg.tenisapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "4c9e86a0-d6a5-464f-b1c4-53186329152e"
+      }
+    },
+    "owner": "estebamg"
   }
 }

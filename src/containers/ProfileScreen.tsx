@@ -1,12 +1,12 @@
+import { useNavigation } from '@react-navigation/native';
+import { Formik } from 'formik';
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text, View } from 'react-native';
 import styled from 'styled-components/native';
+import * as Yup from 'yup';
 import Button from '~/components/Button';
 import Input from '~/components/Input';
 import Txt from '~/components/Txt';
-import * as Yup from 'yup';
-import { Formik } from 'formik';
-import { useNavigation } from '@react-navigation/native';
 
 const ScreenContainer = styled(View)`
   display: flex;
@@ -66,7 +66,7 @@ const InputCodeScreen: React.FC = () => {
 
             <ButtonsContainer>
               <Button type="primary" onPress={() => handleSubmit()}>
-              Crear Perfil
+                Crear Perfil
               </Button>
             </ButtonsContainer>
           </>

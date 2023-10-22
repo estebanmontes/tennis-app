@@ -1,9 +1,10 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text, View } from 'react-native';
 import styled from 'styled-components/native';
 import Button from '~/components/Button';
-import Txt from '~/components/Txt';
 import Logo from '~/components/Logo';
+import Txt from '~/components/Txt';
 
 const BigText = styled(Text)`
   font-family: 'DMSans-Bold';
@@ -36,31 +37,26 @@ const OptionsContainer = styled(View)`
   margin-bottom: 62px;
 `;
 
-const LineButton = styled(View)`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  align-self: center;
-  margin-right: 32px;
-  margin-left: 32px;
-`;
-
-const LoginScreen: React.FC = () => {
+const EvaluationWelcome: React.FC = () => {
+  const navigation = useNavigation();
   return (
     <ScreenContainer>
-        <Logo />
-        <OptionsContainer>
-        <Txt color={'#fff'} uppercase={true} type="mono">Bienvenido al club</Txt>
-          <BigText>Descubrí tu nivel NTPR.</BigText>
-          <Paragraph>
-          A través de 7 preguntas, evaluaremos tu experiencia y destrezas en tenis para brindarte una experiencia acorde.
-          </Paragraph>
-          <Button onPress={() => undefined} type="primary">
-            Iniciar evaluación
-          </Button>
-        </OptionsContainer>
+      <Logo />
+      <OptionsContainer>
+        <Txt color={'#fff'} uppercase={true} type="mono">
+          Bienvenido al club
+        </Txt>
+        <BigText>Descubrí tu nivel NTPR.</BigText>
+        <Paragraph>
+          A través de 7 preguntas, evaluaremos tu experiencia y destrezas en tenis para brindarte
+          una experiencia acorde.
+        </Paragraph>
+        <Button onPress={() => navigation.navigate('QuestionaireScreen')} type="primary">
+          Iniciar evaluación
+        </Button>
+      </OptionsContainer>
     </ScreenContainer>
   );
 };
 
-export default LoginScreen;
+export default EvaluationWelcome;

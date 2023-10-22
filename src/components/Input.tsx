@@ -1,7 +1,7 @@
+import { FontAwesome } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import { TextInputProps } from 'react-native';
 import styled from 'styled-components/native';
-import { FontAwesome } from '@expo/vector-icons';
 
 interface InputProps extends TextInputProps {
   label: string;

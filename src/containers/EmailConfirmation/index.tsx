@@ -1,12 +1,12 @@
+import { useNavigation } from '@react-navigation/native';
+import { Formik } from 'formik';
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import styled from 'styled-components/native';
+import * as Yup from 'yup';
 import Button from '~/components/Button';
 import Input from '~/components/Input';
 import Txt from '~/components/Txt';
-import * as Yup from 'yup';
-import { Formik } from 'formik';
-import { useNavigation } from '@react-navigation/native';
 
 const ScreenContainer = styled(View)`
   display: flex;
@@ -15,13 +15,6 @@ const ScreenContainer = styled(View)`
   padding-left: 12px;
   padding-right: 12px;
 `;
-const Text1 = styled(Text)`
-  font-family: 'DMSans-Bold';
-  font-size: 36px;
-  color: #000;
-  margin-bottom: 26px;
-`;
-
 const ButtonsContainer = styled(View)`
   display: flex;
   flex: 3;
@@ -42,7 +35,10 @@ const InputEmailScreen: React.FC = () => {
   return (
     <ScreenContainer>
       <Txt type="t1">Confirmá tu correo electrónico</Txt>
-      <Txt type="t2">Hemos enviado un mensaje de confirmación a tu correo electrónico. Si tu código no aparece en menos de un minuto, intentá de nuevo.</Txt>
+      <Txt type="t2">
+        Hemos enviado un mensaje de confirmación a tu correo electrónico. Si tu código no aparece en
+        menos de un minuto, intentá de nuevo.
+      </Txt>
       <Formik
         initialValues={{ code: '' }}
         validationSchema={validationSchema}
@@ -61,7 +57,7 @@ const InputEmailScreen: React.FC = () => {
 
             <ButtonsContainer>
               <Button type="primary" onPress={() => handleSubmit()}>
-              Verificar cuenta
+                Verificar cuenta
               </Button>
               <Button onPress={() => navigation.goBack()} type="tertiary">
                 Reenviar código

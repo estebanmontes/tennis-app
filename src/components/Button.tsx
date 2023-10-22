@@ -44,7 +44,6 @@ const IconLeftContainer = styled.View`
   margin-right: 12px;
 `;
 
-
 const Button: React.FC<ButtonProps> = ({ iconLeft, type, children, ...rest }) => {
   return (
     <ButtonContainer type={type} {...rest}>

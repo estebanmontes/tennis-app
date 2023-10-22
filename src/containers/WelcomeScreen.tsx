@@ -1,13 +1,12 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 import { Video } from 'expo-av';
+import React from 'react';
+import { Text, View } from 'react-native';
 import styled from 'styled-components/native';
 import Button from '~/components/Button';
-import Txt from '~/components/Txt';
-import { FontAwesome } from '@expo/vector-icons';
-import TextButton from '~/components/TextButton';
-import { useNavigation } from '@react-navigation/native';
 import Logo from '~/components/Logo';
+import TextButton from '~/components/TextButton';
 
 const VideoBackground = styled(Video)`
   position: absolute;
@@ -44,7 +43,7 @@ const OptionsContainer = styled(View)`
   flex: 2;
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 62px;
+  margin-bottom: 36px;
 `;
 
 const LineButton = styled(View)`
@@ -115,7 +114,11 @@ const LoginScreen: React.FC = () => {
             Registrar correo electrónico
           </Button>
           <Text2> Otras opciones</Text2>
-          <Button iconLeft={<FontAwesome name={'google'} size={20} color="black" />} onPress={() => setShowMore(!showMore)} type="secondary">
+          <Button
+            iconLeft={<FontAwesome name={'google'} size={20} color="black" />}
+            onPress={() => setShowMore(!showMore)}
+            type="secondary"
+          >
             Continuar con Google
           </Button>
           <Button onPress={() => setShowMore(!showMore)} type="tertiary">
@@ -123,9 +126,11 @@ const LoginScreen: React.FC = () => {
           </Button>
           <LineButton>
             <TextBtn>Ya tenes una cuenta ?</TextBtn>
-            <TextButton onPress={() => navigation.navigate('LoginScreen')}> Iniciá sesión</TextButton>
+            <TextButton onPress={() => navigation.navigate('LoginScreen')}>
+              {' '}
+              Iniciá sesión
+            </TextButton>
           </LineButton>
-          
         </OptionsContainer>
       )}
     </ScreenContainer>
