@@ -1,12 +1,13 @@
+import { useNavigation } from '@react-navigation/native';
+import { Formik } from 'formik';
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import styled from 'styled-components/native';
+import * as Yup from 'yup';
 import Button from '~/components/Button';
 import Input from '~/components/Input';
-import * as Yup from 'yup';
 import Txt from '~/components/Txt';
-import { Formik } from 'formik';
-import { useNavigation } from '@react-navigation/native';
+import { useAuth } from '~/context/authContext';
 
 const ScreenContainer = styled(View)`
   display: flex;
@@ -30,14 +31,22 @@ const RegisterScreen: React.FC = () => {
     email: Yup.string().email('Invalid email').required('Required'),
     password: Yup.string().required('Required'),
   });
-  const handleFormSubmit = (values: any) => {
-    // Do something with the form values (e.g., submit to backend)
+  const { register } = useAuth();
+
+  const handleFormSubmit = async (values: any) => {
     console.log(values);
+    const user = await register(values);
+    if (user.success) {
+      console.log(user);
+      navigation.navigate('EvaluationWelcomeScreen');
+    }
+    // Do something with the form values (e.g., submit to backend)
   };
+
   return (
     <ScreenContainer>
-      <Txt type='t1'>Creá tu cuenta</Txt>
-      <Txt type='t2'>Al crear tu cuenta, aceptas nuestros términos y condiciones.</Txt>
+      <Txt type="t1">Creá tu cuenta</Txt>
+      <Txt type="t2">Al crear tu cuenta, aceptas nuestros términos y condiciones.</Txt>
       <Formik
         initialValues={{ email: '', password: '' }}
         validationSchema={validationSchema}
@@ -62,7 +71,9 @@ const RegisterScreen: React.FC = () => {
               isPassword
             />
             <ButtonsContainer>
-              <Button onPress={handleSubmit} type="primary">Crear cuenta</Button>
+              <Button onPress={handleSubmit} type="primary">
+                Crear cuenta
+              </Button>
               <Button onPress={() => navigation.goBack()} type="tertiary">
                 Volver
               </Button>

@@ -101,7 +101,7 @@ const LoginScreen: React.FC = () => {
           <Button onPress={() => setShowMore(!showMore)} type="primary">
             Crear cuenta
           </Button>
-          <Button onPress={() => navigation.navigate('EvaluationWelcomeScreen')} type="secondary">
+          <Button onPress={() => navigation.navigate('LoginScreen')} type="secondary">
             Iniciar sesión
           </Button>
         </OptionsContainer>

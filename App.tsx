@@ -1,9 +1,10 @@
+import { useFonts } from 'expo-font';
 import React from 'react';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
-import theme from './src/theme/theme';
-import { useFonts } from 'expo-font';
+import AuthProvider from '~/context/authContext';
 import store from '~/redux/store'; // Create your store and export it
+import theme from './src/theme/theme';
 // import { store } from './src/store'; // Create your store and export it
 
 import AppNavigator from './src/navigation/AppNavigator';
@@ -21,7 +22,9 @@ const App: React.FC = () => {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <AppNavigator />
+        <AuthProvider>
+          <AppNavigator />
+        </AuthProvider>
       </ThemeProvider>
     </Provider>
   );

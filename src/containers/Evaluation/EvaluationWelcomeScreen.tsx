@@ -12,6 +12,7 @@ const BigText = styled(Text)`
   color: #fff;
   font-weight: bold;
   line-height: 62px; /* 60px */
+  margin-top: 12px;
   letter-spacing: -1.8px;
 `;
 
@@ -46,13 +47,23 @@ const EvaluationWelcome: React.FC = () => {
         <Txt color={'#fff'} uppercase={true} type="mono">
           Bienvenido al club
         </Txt>
-        <BigText>Descubrí tu nivel NTPR.</BigText>
+        <BigText>Auto Evaluacíon.</BigText>
         <Paragraph>
-          A través de 7 preguntas, evaluaremos tu experiencia y destrezas en tenis para brindarte
-          una experiencia acorde.
+          Ayudanos a evaluar tu experiencia y destrezas en tenis para poder brindarte una
+          experiencia acorde a tu nivel.
         </Paragraph>
         <Button onPress={() => navigation.navigate('QuestionaireScreen')} type="primary">
           Iniciar evaluación
+        </Button>
+        <Button
+          onPress={() =>
+            navigation.navigate('QuestionaireScreen', {
+              isNTPR: true,
+            })
+          }
+          type="secondary"
+        >
+          Ya conozco mi nivel NTPR
         </Button>
       </OptionsContainer>
     </ScreenContainer>

@@ -4,7 +4,9 @@ import styled from 'styled-components/native';
 
 interface ButtonProps extends TouchableOpacityProps {
   type: 'primary' | 'secondary' | 'tertiary';
+  border?: boolean;
   iconLeft?: React.ReactNode;
+  iconRight?: React.ReactNode;
 }
 
 const getBackgroundColor = (type: ButtonProps['type'], theme: any) => {
@@ -24,6 +26,7 @@ const ButtonContainer = styled.TouchableOpacity<ButtonProps>`
   border-radius: 8px;
   text-align: center;
   flex-direction: row;
+  border: ${(props) => (props.border ? `2px solid #C0C0C0` : 'none')};
   align-items: center;
   margin-top: 12px;
   min-height: 54px;
@@ -43,12 +46,16 @@ const ButtonText = styled.Text<ButtonProps>`
 const IconLeftContainer = styled.View`
   margin-right: 12px;
 `;
+const IconRightContainer = styled.View`
+  margin-left: 12px;
+`;
 
-const Button: React.FC<ButtonProps> = ({ iconLeft, type, children, ...rest }) => {
+const Button: React.FC<ButtonProps> = ({ iconLeft, type, children, iconRight, ...rest }) => {
   return (
     <ButtonContainer type={type} {...rest}>
       {iconLeft && <IconLeftContainer>{iconLeft}</IconLeftContainer>}
       <ButtonText type={type}>{children}</ButtonText>
+      {iconRight && <IconRightContainer>{iconRight}</IconRightContainer>}
     </ButtonContainer>
   );
 };

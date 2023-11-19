@@ -16,6 +16,7 @@ module.exports = function (api) {
             '~/containers': './src/containers',
             '~/services': './src/services',
             '~/redux': './src/redux',
+            '~/context': './src/context',
           },
         },
       ],

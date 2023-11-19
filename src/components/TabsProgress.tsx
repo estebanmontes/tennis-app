@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
+
 const TabsContainer = styled.TouchableOpacity`
   flex-direction: row;
   margin-bottom: 16px;
@@ -12,7 +13,7 @@ const Tab = styled.View`
   margin-right: 2px;
   background-color: ${(props) =>
     props.fill ? props.theme.colors.primary : props.theme.colors.gray};
-  width: 42px;
+  width: 47%;
 `;
 
 const TabProgress = ({ count, step }) => {

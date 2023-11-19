@@ -1,14 +1,15 @@
-import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React from 'react';
 
-import LoginScreen from 'containers/LoginScreen';
-import RegisterScreen from 'containers/RegisterScreen';
-import WelcomeScreen from 'containers/WelcomeScreen';
 import InputCodeScreen from 'containers/AccountRecovery/InputCode';
 import InputEmailScreen from 'containers/AccountRecovery/InputEmail';
 import EmailConfirmationScreen from 'containers/EmailConfirmation';
-import EvaluationWelcomeScreen from 'containers/Evaluation/EvaluationWelcomeScreen'
-import QuestionaireScreen from 'containers/Evaluation/EvaluationQuestionaire'
+import QuestionaireScreen from 'containers/Evaluation/EvaluationQuestionaire';
+import EvaluationResultsScreen from 'containers/Evaluation/EvaluationResults';
+import EvaluationWelcomeScreen from 'containers/Evaluation/EvaluationWelcomeScreen';
+import LoginScreen from 'containers/LoginScreen';
+import RegisterScreen from 'containers/RegisterScreen';
+import WelcomeScreen from 'containers/WelcomeScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -49,6 +50,11 @@ const AuthNavigator: React.FC = () => {
       <Stack.Screen
         name="QuestionaireScreen"
         component={QuestionaireScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="EvaluationResultsScreen"
+        component={EvaluationResultsScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

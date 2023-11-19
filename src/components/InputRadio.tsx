@@ -1,6 +1,7 @@
 import { FontAwesome } from '@expo/vector-icons';
 import React from 'react';
 import styled from 'styled-components/native';
+
 const RadioButtonContainer = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;

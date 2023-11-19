@@ -1,13 +1,14 @@
+import { useNavigation } from '@react-navigation/native';
+import { Formik } from 'formik';
 import React from 'react';
-import { View, Text } from 'react-native';
-import styled from 'styled-components/native';
+import { Text, View } from 'react-native';
+import styled, { useTheme } from 'styled-components/native';
+import * as Yup from 'yup';
 import Button from '~/components/Button';
 import Input from '~/components/Input';
-import * as Yup from 'yup';
+import Loader from '~/components/Loader';
 import TextButton from '~/components/TextButton';
-import { Formik } from 'formik';
-import { useTheme } from 'styled-components/native';
-import { useNavigation } from '@react-navigation/native';
+import { useAuth } from '~/context/authContext';
 
 const ScreenContainer = styled(View)`
   display: flex;
@@ -32,20 +33,32 @@ const ButtonsContainer = styled(View)`
   margin-top: 24px;
 `;
 
-const RegisterScreen: React.FC = () => {
+const LoginScreen: React.FC = () => {
   const theme = useTheme();
+  const [loading, setLoading] = React.useState<boolean>(false);
   const validationSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Required'),
     password: Yup.string().required('Required'),
   });
-  const handleFormSubmit = (values: any) => {
+  const { login } = useAuth();
+  const handleFormSubmit = async (values: any) => {
+    setLoading(true);
     // Do something with the form values (e.g., submit to backend)
+    const response = await login(values.email, values.password);
+    console.log('login res', response);
+    const { user } = response;
+    if (user) {
+      setLoading(false);
+      navigation.navigate('EvaluationWelcomeScreen');
+    }
+    setLoading(false);
     console.log(values);
   };
   const navigation = useNavigation();
   return (
     <ScreenContainer>
       <Text1>Iniciá sesión</Text1>
+      <Loader isVisible={loading} />
       <Formik
         initialValues={{ email: '', password: '' }}
         validationSchema={validationSchema}
@@ -74,7 +87,10 @@ const RegisterScreen: React.FC = () => {
               <Button type="primary" onPress={() => handleSubmit()}>
                 Iniciar sesión
               </Button>
-              <TextButton onPress={() => navigation.navigate('InputEmailScreen')} color={theme.colors.green}>
+              <TextButton
+                onPress={() => navigation.navigate('InputEmailScreen')}
+                color={theme.colors.green}
+              >
                 Olvidaste tu contraseña?
               </TextButton>
             </ButtonsContainer>
@@ -85,4 +101,4 @@ const RegisterScreen: React.FC = () => {
   );
 };
 
-export default RegisterScreen;
+export default LoginScreen;
