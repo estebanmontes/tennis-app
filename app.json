@@ -2,7 +2,7 @@
   "expo": {
     "name": "Radrrr",
     "slug": "tenis-app",
-    "version": "1.0.2",
+    "version": "1.0.02",
     "orientation": "portrait",
     "icon": "./assets/AppIcon.png",
     "userInterfaceStyle": "light",
