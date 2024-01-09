@@ -1,11 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createContext, useContext, useState } from 'react';
-import {
-  login as loginService,
-  refreshToken,
-  register as registerService,
-  verifyToken,
-} from '~/services/authServices';
+import { login as loginService, register as registerService } from '~/services/authServices';
 
 import { getProfile } from '~/services/profileServices';
 
@@ -52,29 +47,7 @@ const AuthProvider: React.FC<any> = ({ children }) => {
   const onLoad = async () => {
     const token = await AsyncStorage.getItem('token');
     const userInfo = await AsyncStorage.getItem('user');
-    let isExpired = false;
     const parsedUserInfo = JSON.parse(userInfo);
-    console.log('token', token);
-    if (token) {
-      const response = await verifyToken(token);
-      console.log('response', response);
-      const { user } = response;
-      if (!user) {
-        isExpired = true;
-      }
-    }
-
-    if (isExpired) {
-      console.log('token expired');
-      const data = await refreshToken();
-      const { token } = data;
-      setUserinfo(parsedUserInfo);
-      await AsyncStorage.setItem('token', token);
-      setToken(token);
-      setIsLoggedIn(true);
-      return;
-    }
-
     if (token && parsedUserInfo) {
       console.log('token and user info found');
       setToken(token);

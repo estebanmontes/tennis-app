@@ -3,9 +3,10 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import styled from 'styled-components/native';
 import Button from '~/components/Button';
-import LookingIcon from '~/components/LookingIcon';
+import PeopleCard from '~/components/PeopleCard';
+import RankingList from '~/components/RankingList';
 import { useAuth } from '~/context/authContext';
-
+import { RankingData } from '../../assets/dummyData/data';
 import Txt from '../components/Txt';
 
 const RankinContainer = styled(View)`
@@ -41,12 +42,13 @@ const NoResultContainer = styled(View)`
 
 const RankingScreen: React.FC = () => {
   const { userInfo } = useAuth();
+  const rankingTopThree = RankingData.slice(0, 3);
   return (
     <ScreenContainer>
       <Txt type="t3" color="#000" uppercase={false}>
         Tu Ranking
       </Txt>
-      <BigText>{userInfo?.level}</BigText>
+      <Txt type={'t1'}>{userInfo?.level}</Txt>
       <Txt type="t2" color="#000" uppercase={false}>
         {'Este ranking muestra jugadores nivel 4.5 NTPR en adelante. '}
       </Txt>
@@ -65,7 +67,9 @@ const RankingScreen: React.FC = () => {
           <FontAwesome name="filter" size={24} color="black" />
         </Button>
       </RankinContainer>
-      <NoResultContainer>
+      <PeopleCard people={rankingTopThree} />
+      <RankingList rankings={RankingData} />
+      {/* <NoResultContainer>
         <LookingIcon width={200} height={200} />
         <Txt
           style={{
@@ -87,7 +91,7 @@ const RankingScreen: React.FC = () => {
         >
           ¡Nuestro club acaba de comenzar! Invita a tus amigos a unirse a nosotros.
         </Txt>
-      </NoResultContainer>
+      </NoResultContainer> */}
       {/* Add your login form and logic here */}
     </ScreenContainer>
   );

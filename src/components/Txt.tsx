@@ -14,13 +14,19 @@ const Text1 = styled(Text)`
   font-family: 'DMSans-Bold';
   font-size: 36px;
   color: #000;
-  margin-bottom: 26px;
+  margin-bottom: 16px;
 `;
 
 const Text3 = styled(Text)`
   font-family: 'DMSans-Bold';
   font-size: 24px;
-  font-weight: 300;
+  color: #000;
+`;
+
+const Text4 = styled(Text)`
+  font-family: 'DMSans-Bold';
+  font-size: 16px;
+  font-weight: 700;
   color: #000;
 `;
 
@@ -33,10 +39,10 @@ const TextMono = styled(Text)`
 `;
 
 interface TextProps {
-  type: 't1' | 't2' | 't3' | 'mono';
+  type: 't1' | 't2' | 't3' | 't4' | 'mono';
   children: string;
-  color: string;
-  uppercase: boolean;
+  color?: string;
+  uppercase?: boolean;
 }
 
 const Txt: React.FC<TextProps> = ({ type, children, ...props }) => {
@@ -48,6 +54,9 @@ const Txt: React.FC<TextProps> = ({ type, children, ...props }) => {
   }
   if (type === 't3') {
     return <Text3 {...props}>{children}</Text3>;
+  }
+  if (type === 't4') {
+    return <Text4 {...props}>{children}</Text4>;
   }
   if (type === 'mono') {
     return <TextMono {...props}>{children}</TextMono>;
