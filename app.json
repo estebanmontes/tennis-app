@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "scratch-app",
+    "name": "Radrrr",
     "slug": "tenis-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/AppIcon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
@@ -14,14 +14,14 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.tennis.radrrr"
+      "bundleIdentifier": "com.radrrr"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.tennis.radrrr"
+      "package": "com.radrrr"
     },
     "web": {
       "favicon": "./assets/favicon.png"
