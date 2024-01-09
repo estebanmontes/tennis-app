@@ -49,9 +49,7 @@ export const register = async (email: string, password: string): Promise<User> =
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password }),
   });
-  console.log('response', response);
   const data = await response.json();
-  console.log('data', data);
   if (data.error) {
     throw new Error(data.error);
   }

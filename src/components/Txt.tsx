@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 const Text2 = styled(Text)`
   font-family: 'DMSans-Regular';
   font-size: 16px;
-  color: #000;
+  color: ${(props: TextProps) => props.color ?? '#000'};
   font-weight: 400;
   margin-top: 12px;
   margin-bottom: 8px;
@@ -13,21 +13,21 @@ const Text2 = styled(Text)`
 const Text1 = styled(Text)`
   font-family: 'DMSans-Bold';
   font-size: 36px;
-  color: #000;
+  color: ${(props: TextProps) => props.color ?? '#000'};
   margin-bottom: 16px;
 `;
 
 const Text3 = styled(Text)`
   font-family: 'DMSans-Bold';
   font-size: 24px;
-  color: #000;
+  color: ${(props: TextProps) => props.color ?? '#000'};
 `;
 
 const Text4 = styled(Text)`
   font-family: 'DMSans-Bold';
   font-size: 16px;
   font-weight: 700;
-  color: #000;
+  color: ${(props: TextProps) => props.color ?? '#000'};
 `;
 
 const TextMono = styled(Text)`

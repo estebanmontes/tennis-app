@@ -81,6 +81,7 @@ const AuthProvider: React.FC<any> = ({ children }) => {
         // await AsyncStorage.setItem('username', name + ' ' + lastname);
         return response;
       }
+      return response;
     } catch (error: any) {
       setError(error.message);
       console.error('Error registering:', error);
