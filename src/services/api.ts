@@ -15,6 +15,7 @@ export const fetchWithToken = async (url: string, options: RequestInit): Promise
   });
   console.log('response222', response);
   const data = await response.json();
+  console.log('data flow', data);
   if (data.error) {
     throw new Error(data.error);
   }

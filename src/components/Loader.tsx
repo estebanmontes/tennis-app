@@ -26,11 +26,9 @@ const Loader: React.FC<LoaderProps> = ({ isVisible }) => {
 
   return (
     <LoaderContainer
-      style={
-        {
-          // backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        }
-      }
+      style={{
+        zIndex: 9999,
+      }}
     >
       <LottieView
         source={LoaderBlack} // Replace with your Lottie file path

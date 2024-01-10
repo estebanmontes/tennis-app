@@ -26,10 +26,11 @@ export const addLevel = async (level: string): Promise<User> => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ level }),
   });
-  const data = await response.json();
+  const data = await response;
   if (data.error) {
     throw new Error(data.error);
   }
+  console.log('one', data);
   return data;
 };
 

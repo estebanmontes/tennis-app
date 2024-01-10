@@ -83,7 +83,6 @@ const EvaluationResult: React.FC = () => {
   const onPressCreate = async () => {
     setLoading(true);
     const response = await addLevel(data?.level);
-    console.log('response', response);
     if (response.user) {
       updateUserInfo(response.user);
       setLoading(false);

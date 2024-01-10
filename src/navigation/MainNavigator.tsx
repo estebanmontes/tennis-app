@@ -1,18 +1,15 @@
 import { FontAwesome5, Ionicons } from '@expo/vector-icons';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { useTheme } from 'react-native-paper';
 
+import { useNavigation } from '@react-navigation/native';
 import HomeScreen from 'containers/HomeScreen';
 import PlayScreen from '~/containers/PlayScreen';
 import RankingScreen from '~/containers/RankingScreen';
-// import RegisterScreen from 'containers/RegisterScreen';
-import { useNavigation } from '@react-navigation/native';
 import { useAuth } from '~/context/authContext';
 
-const Tab = createMaterialBottomTabNavigator();
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 const MainNavigator: React.FC = () => {
   const theme = useTheme();
@@ -20,53 +17,48 @@ const MainNavigator: React.FC = () => {
   const { userInfo, getUserInfo } = useAuth();
   const navigation = useNavigation();
 
-  // React.useEffect(() => {
-  //   getUserInfo();
-  // }, []);
-
   React.useEffect(() => {
     if (userInfo && !userInfo?.level) {
       navigation.navigate('EvaluationWelcomeScreen');
     }
   }, [userInfo]);
 
-  console.log('userInfo', userInfo);
   return (
     <Tab.Navigator
       screenOptions={{
         tabBarLabel: '',
+        tabBarActiveTintColor: '#D8FA52',
+        headerShown: false,
       }}
-      barStyle={{
-        backgroundColor: '#fff',
-        borderTopColor: '#C0C0C0',
-        borderTopWidth: 2,
-        borderRadius: 2,
-        height: 80,
-        justifyContent: 'center',
-        alignItems: 'center',
+      sceneContainerStyle={{
+        backgroundColor: theme.colors.secondaryContainer,
+        height: 40,
+        marginTop: 8,
       }}
-      activeColor="#D8FA52"
     >
       <Tab.Screen
-        name="Home"
+        name="HomeScreen"
         options={{
           tabBarLabel: '',
+          headerShown: false,
           tabBarIcon: ({ color }) => <Ionicons name="home" color={color} size={26} />,
         }}
         component={HomeScreen}
       />
       <Tab.Screen
-        name="Play"
+        name="PlayScreen"
         options={{
           tabBarLabel: '',
+          headerShown: false,
           tabBarIcon: ({ color }) => <Ionicons name="tennisball" color={color} size={26} />,
         }}
         component={PlayScreen}
       />
       <Tab.Screen
-        name="Ranking"
+        name="RankingSreen"
         options={{
           tabBarLabel: '',
+          headerShown: false,
           tabBarIcon: ({ color }) => <FontAwesome5 name="medal" color={color} size={26} />,
         }}
         component={RankingScreen}

@@ -10,8 +10,8 @@ export const login = async (email: string, password: string): Promise<User> => {
     body: JSON.stringify({ email, password }),
   });
   const data = await response.json();
-  if (data.error) {
-    throw new Error(data.error);
+  if (data.message && !data.success) {
+    return data;
   }
   return data;
 };

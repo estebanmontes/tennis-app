@@ -8,6 +8,7 @@ import Button from '~/components/Button';
 import Input from '~/components/Input';
 import Loader from '~/components/Loader';
 import TextButton from '~/components/TextButton';
+import Txt from '~/components/Txt';
 import { useAuth } from '~/context/authContext';
 
 const ScreenContainer = styled(View)`
@@ -29,13 +30,13 @@ const ButtonsContainer = styled(View)`
   flex: 3;
   margin-bottom: 62px;
   justify-content: flex-end;
-
   margin-top: 24px;
 `;
 
 const LoginScreen: React.FC = () => {
   const theme = useTheme();
   const [loading, setLoading] = React.useState<boolean>(false);
+  const [error, setError] = React.useState<string>('');
   const validationSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Required'),
     password: Yup.string().required('Required'),
@@ -50,9 +51,10 @@ const LoginScreen: React.FC = () => {
     if (user) {
       setLoading(false);
       navigation.navigate('EvaluationWelcomeScreen');
+    } else {
+      setLoading(false);
+      setError(response.message);
     }
-    setLoading(false);
-    console.log(values);
   };
   const navigation = useNavigation();
   return (
@@ -66,6 +68,11 @@ const LoginScreen: React.FC = () => {
       >
         {({ handleChange, handleSubmit, values, errors, touched }) => (
           <>
+            {error ? (
+              <Txt type="t2" color={theme.colors.error}>
+                {error}
+              </Txt>
+            ) : null}
             <Input
               label="Correo electrónico"
               value={values.email}

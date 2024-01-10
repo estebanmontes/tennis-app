@@ -67,7 +67,6 @@ const AuthProvider: React.FC<any> = ({ children }) => {
 
   const register = async ({ email, password }: IUser) => {
     try {
-      console.log('registering', { email, password });
       const response = await registerService(email, password);
       console.log('response', response);
       if (response.token && response.success) {
@@ -98,6 +97,9 @@ const AuthProvider: React.FC<any> = ({ children }) => {
         setUserinfo(user);
         await AsyncStorage.setItem('token', token);
         await AsyncStorage.setItem('user', JSON.stringify(user));
+        return response;
+      } else {
+        setError(response.message);
         return response;
       }
     } catch (error: any) {
