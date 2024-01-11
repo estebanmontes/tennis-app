@@ -83,7 +83,7 @@ const EvaluationResult: React.FC = () => {
   const onPressCreate = async () => {
     setLoading(true);
     const response = await addLevel(data?.level);
-    if (response.user) {
+    if (response && response.user) {
       updateUserInfo(response.user);
       setLoading(false);
       return navigation.navigate('HomeScreen');
