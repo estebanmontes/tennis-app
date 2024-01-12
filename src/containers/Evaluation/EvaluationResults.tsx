@@ -57,22 +57,18 @@ const EvaluationResult: React.FC = () => {
     return results.reduce((acc, result) => acc + result.answer, 0);
   };
   React.useEffect(() => {
+    navigation.navigate('HomeScreen');
     const sumOfResults = getSumOfResults(route.params.data);
-    console.log('hey', sumOfResults);
     if (sumOfResults >= 7) {
-      console.log('set', ResultData[5]);
       setData(ResultData[5]);
     }
     if (sumOfResults >= 5 && sumOfResults < 7) {
-      console.log('set', ResultData[4]);
       setData(ResultData[4]);
     }
     if (sumOfResults > 3 && sumOfResults < 5) {
-      console.log('set', ResultData[3]);
       setData(ResultData[3]);
     }
     if (sumOfResults >= 1 && sumOfResults <= 3) {
-      console.log('set', ResultData[2]);
       setData(ResultData[2]);
     }
     if (sumOfResults === 0) {
@@ -83,6 +79,7 @@ const EvaluationResult: React.FC = () => {
   const onPressCreate = async () => {
     setLoading(true);
     const response = await addLevel(data?.level);
+    console.log('add level', response);
     if (response && response.user) {
       updateUserInfo(response.user);
       setLoading(false);

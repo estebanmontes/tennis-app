@@ -82,10 +82,15 @@ const TextBtn = styled(Text)`
 const LoginScreen: React.FC = () => {
   const [showMore, setShowMore] = React.useState(false);
   const navigation = useNavigation();
+  const video_url =
+    'https://drive.google.com/file/d/1AJZIVIeL1DsLKdGVV19cmSU0NDAqNFyf/view?usp=sharing';
   return (
     <ScreenContainer>
       <VideoBackground
-        source={require('../../assets/login-bg.mp4')}
+        //source={require('../../assets/login-bg.mp4')}
+        source={{
+          uri: video_url,
+        }}
         resizeMode="cover"
         shouldPlay
         isLooping

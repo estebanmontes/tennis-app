@@ -6,7 +6,6 @@ const Text2 = styled(Text)`
   font-size: 16px;
   color: ${(props: TextProps) => props.color ?? '#000'};
   font-weight: 400;
-  margin-top: 12px;
   margin-bottom: 8px;
 `;
 
@@ -14,7 +13,6 @@ const Text1 = styled(Text)`
   font-family: 'DMSans-Bold';
   font-size: 36px;
   color: ${(props: TextProps) => props.color ?? '#000'};
-  margin-bottom: 16px;
 `;
 
 const Text3 = styled(Text)`
